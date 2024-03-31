@@ -17,24 +17,30 @@ final class JwtKey{
 
 	private static Key $key;
 
-	public static function initFromFile(string $filePath) : void{
-		if(!file_exists($filePath)){
-			while(true){
-				try{
-					$keyBytes = random_bytes(32);
-					break;
-				}catch(Exception){
-					// попробовать снова, если random_bytes не удалось сгенерировать рандомные байты
-					continue;
-				}
+	public static function initFromRandom() : void{
+		while(true){
+			try{
+				$keyBytes = random_bytes(32);
+				break;
+			}catch(Exception){
+				// попробовать снова, если random_bytes не удалось сгенерировать рандомные байты
+				continue;
 			}
-
-			file_put_contents($filePath, base64_encode($keyBytes));
-		}else{
-			$keyBytes = base64_decode(file_get_contents($filePath));
 		}
 
 		self::$key = new Key($keyBytes, 'HS256');
+	}
+
+	public static function initFromFile(string $filePath) : void{
+		if(!file_exists($filePath)){
+			self::initFromRandom();
+
+			$keyBytes = self::$key->getKeyMaterial();
+			file_put_contents($filePath, base64_encode($keyBytes));
+		}else{
+			$keyBytes = base64_decode(file_get_contents($filePath));
+			self::$key = new Key($keyBytes, 'HS256');
+		}
 	}
 
 	public static function get() : Key{
