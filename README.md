@@ -58,6 +58,23 @@ $ php -S localhost:8080 router.php
 
 Указанная выше команда запустит проект при помощи роутер-файла ``router.php``.
 
+## Сборка через Docker
+
+Чтобы собрать образ Docker для сервиса, можно воспользоваться командой:
+
+```shell
+$ docker build -t register_auth .
+```
+
+Стоит заметить, что Dockerfile изначально собирается только с поддержкой SQLite и MySQL.
+Если необходима поддержка иных СУБД, то следует дописать нужные расширения в строчку с командой `docker-php-ext-install`.
+
+Затем можно запустить образ Docker, указав в качестве тома конфигурационный файл и пробросив порт:
+
+```shell
+$ docker run -v ./config.json:/app/config.json -p 8080:8080/tcp register_auth
+```
+
 ## Документация
 
 Документацию по API можно прочитать [в отдельном файле](https://github.com/Encritary/vk_registerAuth/blob/main/API.md).
