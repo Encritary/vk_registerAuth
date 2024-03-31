@@ -20,6 +20,10 @@ $ composer install
 
 Для сервиса может использоваться любая база данных, поддерживаемая расширением PDO для PHP.
 
+В папке `sql` можно найти схемы базы данных:
+- [для MySQL](https://github.com/Encritary/vk_registerAuth/blob/main/sql/mysql_schema.sql)
+- [для SQLite](https://github.com/Encritary/vk_registerAuth/blob/main/sql/sqlite_schema.sql)
+
 ## Настройка
 
 Также перед запуском необходимо создать файл `config.json` и заполнить его согласно примеру конфигурации: `config.example.json`.
