@@ -1,0 +1,7 @@
+{
+  "db": {
+    "dsn": "mysql:host=127.0.0.1;dbname=register_auth",
+    "username": "someuser",
+    "password": "123456"
+  }
+}
