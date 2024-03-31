@@ -31,7 +31,7 @@ use const PASSWORD_BCRYPT;
 
 class UserController extends AttributedController{
 
-	public const TOKEN_LIFETIME = 60; // время жизни (в секундах) JWT-токена для авторизации
+	protected int $tokenLifetime = 60; // время жизни (в секундах) JWT-токена для авторизации
 
 	#[Route]
 	public function register(Request $request) : Response{
@@ -87,7 +87,7 @@ class UserController extends AttributedController{
 		$jwt = JWT::encode([
 			'iat' => $now,
 			'nbf' => $now,
-			'exp' => $now + self::TOKEN_LIFETIME,
+			'exp' => $now + $this->tokenLifetime,
 			'userId' => $user->id
 		], $key->getKeyMaterial(), $key->getAlgorithm());
 
