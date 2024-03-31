@@ -20,6 +20,8 @@ $ composer install
 
 Для сервиса может использоваться любая база данных, поддерживаемая расширением PDO для PHP.
 
+Сервис тестировался на СУБД MySQL. Также проверена работа с SQLite, так как он используется в юнит-тестах.
+
 В папке `sql` можно найти схемы базы данных:
 - [для MySQL](https://github.com/Encritary/vk_registerAuth/blob/main/sql/mysql_schema.sql)
 - [для SQLite](https://github.com/Encritary/vk_registerAuth/blob/main/sql/sqlite_schema.sql)
