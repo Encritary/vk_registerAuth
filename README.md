@@ -57,3 +57,7 @@ $ php -S localhost:8080 router.php
 ```
 
 Указанная выше команда запустит проект при помощи роутер-файла ``router.php``.
+
+## Документация
+
+Документацию по API можно прочитать [в отдельном файле](https://github.com/Encritary/vk_registerAuth/blob/main/API.md).
