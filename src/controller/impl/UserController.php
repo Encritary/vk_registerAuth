@@ -110,7 +110,7 @@ class UserController extends AttributedController{
 			throw new AppException("Bad access token: {$e->getMessage()}", HttpCode::Unauthorized, ErrorCode::BadAccessToken->value);
 		}
 
-		return new SuccessResponse(true);
+		return new SuccessResponse(['user_id' => $payload->userId]);
 	}
 
 	public function getName() : string{
