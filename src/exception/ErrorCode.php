@@ -13,7 +13,10 @@ enum ErrorCode: int{
 	case BadParameterFormat = 5;
 	case ModelNotFound = 6;
 
-	case PasswordTooWeak = 7;
+	case UserAlreadyRegistered = 7;
+	case PasswordTooWeak = 8;
+	case InvalidPassword = 9;
+	case BadAccessToken = 10;
 
 	case InternalError = 0xff;
 }

@@ -6,6 +6,7 @@ namespace encritary\registerAuth;
 
 use encritary\registerAuth\config\Config;
 use encritary\registerAuth\controller\ControllerFactory;
+use encritary\registerAuth\controller\impl\UserController;
 use encritary\registerAuth\db\Db;
 use encritary\registerAuth\key\JwtKey;
 use encritary\registerAuth\request\Request;
@@ -24,6 +25,9 @@ final class App{
 		JwtKey::initFromFile('jwt_key.dat');
 
 		ControllerFactory::init();
+
+		$controllerFactory = ControllerFactory::getInstance();
+		$controllerFactory->register(new UserController());
 
 		$this->router = new Router();
 	}
