@@ -7,6 +7,7 @@ namespace encritary\registerAuth;
 use encritary\registerAuth\config\Config;
 use encritary\registerAuth\controller\ControllerFactory;
 use encritary\registerAuth\db\Db;
+use encritary\registerAuth\key\JwtKey;
 use encritary\registerAuth\request\Request;
 use encritary\registerAuth\response\Response;
 use encritary\registerAuth\router\Router;
@@ -19,6 +20,8 @@ final class App{
 		$config = Config::fromFile('config.json');
 
 		Db::init($config->dbCredentials);
+
+		JwtKey::initFromFile('jwt_key.dat');
 
 		ControllerFactory::init();
 
